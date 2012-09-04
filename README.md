@@ -22,8 +22,6 @@ Make HTTP GET requests
 
 <pre>curl http://localhost:5000</pre>
 
-Response for "/":
-
 <pre>[
   "", 
   {
@@ -45,8 +43,6 @@ Response for "/":
 ]</pre>
 
 <pre>curl http://localhost:5000/zookeeper</pre>
-
-Response for "/zookeeper"
 
 <pre>[
   "", 
