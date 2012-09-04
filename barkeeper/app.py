@@ -25,22 +25,22 @@ def favicon():
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def catch_all(path):
+    trailing_slash = path[-1] == '/' if len(path) > 0 else True
     node = normalize_path(path)
     try:
-        value, znode = zk.get(node)
-
-        if znode.numChildren > 0:
+        if trailing_slash:
             children = zk.get_children(node)
-        else:
-            children = []
+            return Response(encode(children), \
+                content_type='application/json')
 
-        return Response(
-            encode([value, znode._asdict(), children]), \
-            content_type='application/json')
+        else:
+            value, znode = zk.get(node)
+            return Response(encode([value, znode._asdict()]), \
+                content_type='application/json')
 
     except zookeeper.NoNodeException:
         return error_response('Not found', 404)
-    
+
     except Exception as e:
         return error_response(str(e), 500)
 
