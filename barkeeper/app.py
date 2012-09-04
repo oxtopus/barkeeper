@@ -10,7 +10,7 @@ encode = partial(json.dumps, indent=2)
 
 def error_response(reason, status, *args):
     response = {
-        'reason': response,
+        'reason': reason,
         'status': status
     }
     return make_response(encode(response), status, *args)
