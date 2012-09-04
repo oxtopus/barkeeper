@@ -1,8 +1,8 @@
 barkeeper
 =========
 
-Barkeeper is a lightweight Flask-based web application to provide a REST 
-interface to Apache Zookeeper.  URL paths are translated to Zookeeper node 
+Barkeeper is a lightweight [Flask](http://flask.pocoo.org/)-based web application to provide a REST 
+interface to [Apache ZooKeeper](http://zookeeper.apache.org/).  URL paths are translated to ZooKeeper node 
 paths, and responses are JSON-formatted.
 
 Responses are 3-tuples comprising:
