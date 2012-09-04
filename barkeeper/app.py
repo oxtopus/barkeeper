@@ -7,8 +7,13 @@ import zookeeper
 app = Flask(__name__)
 
 encode = partial(json.dumps, indent=2)
-error_response = lambda response, status, *args, **kwargs: \
-    make_response(encode({'reason': response, 'status': status}), status)
+
+def error_response(reason, status, *args):
+    response = {
+        'reason': response,
+        'status': status
+    }
+    return make_response(encode(response), status, *args)
 
 def normalize_path(path):
     return '/' + '/'.join(filter(None, path.split('/')))    
