@@ -20,7 +20,7 @@ def normalize_path(path):
 
 @app.route('/favicon.ico')
 def favicon():
-    return ""
+    return ''
     
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
@@ -44,7 +44,7 @@ def catch_all(path):
     except Exception as e:
         return error_response(str(e), 500)
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     zk = KazooClient()
     zk.start()
     app.run()
